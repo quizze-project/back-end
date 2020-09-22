@@ -12,7 +12,7 @@ requests and keep a good consistency.
 
 #### Choice
 
-The framework is Spring Boot 2.3.4
+The framework is **Spring Boot 2.3.4**
 
 ##### Why we chose this framework?
 
@@ -23,7 +23,7 @@ is simpler when compared to other frameworks that run in JVM as Ktor.
 
 #### Choice
 
-The database is PostgreSQL 12.3
+The database is **PostgreSQL 12.3**
 
 ##### Why we chose this database?
 
