@@ -29,7 +29,7 @@ public class Question {
     @Setter(AccessLevel.NONE)
     private List<QuestionAnswer> questionAnswerList;
 
-    private long correct_answer_id;
+    private long correctAnswerId = -1;
 
     public Question(String question, Quiz quiz) {
         this.question = question;
@@ -47,7 +47,7 @@ public class Question {
     public void addAnswer(QuestionAnswer answer, boolean correct) {
         addAnswer(answer);
         if (correct) {
-            correct_answer_id = answer.getId();
+            correctAnswerId = answer.getId();
         }
     }
 }

@@ -27,7 +27,7 @@ public class TestConfig implements CommandLineRunner {
         User u1 = new User("User", "Teste");
 
         Question firstQuestion = new QuestionBuilder("Quem descobriu o Brasil?")
-                .answer("Pedro Alvares Cabral")
+                .answer("Pedro Alvares Cabral", true)
                 .answer("Jorge Carlos")
                 .answer("Fernandinho Beira-Mar")
                 .build();

@@ -16,6 +16,11 @@ public class QuestionBuilder {
         return this;
     }
 
+    public QuestionBuilder answer(String answer, boolean correct) {
+        question.addAnswer(new QuestionAnswer(answer), correct);
+        return this;
+    }
+
     public Question build() {
         return question;
     }
