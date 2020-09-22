@@ -1,20 +1,20 @@
 # Language
 
-####Choice
+#### Choice
 
 The language chosen is **Java 8**.
 
-#####Why we chose this language?
+#### Why we chose this language?
 The Java language have been chosen to optimize the process of scaling and make a platform witch can handle with big
 requests and keep a good consistency.
 
 # Framework
 
-####Why we chose this framework?
+#### Choice
 
 The framework is Spring Boot 2.3.4
 
-#####Why we chose this framework?
+##### Why we chose this framework?
 
 We selected Spring because its simplicity of creating new models and migrate them to database. The framework itself
 is simpler when compared to other frameworks that run in JVM as Ktor.
