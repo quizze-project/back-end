@@ -21,6 +21,8 @@ is simpler when compared to other frameworks that run in JVM as Ktor.
 
 # Database
 
+#### Choice
+
 The database is PostgreSQL 12.3
 
 ##### Why we chose this database?
