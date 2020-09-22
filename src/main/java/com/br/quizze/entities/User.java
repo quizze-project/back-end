@@ -26,6 +26,7 @@ public class User implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "creator")
     @JsonIgnore
+    @Setter(AccessLevel.NONE)
     private List<Quiz> quizzes;
 
     public User(String email, String password) {
