@@ -27,7 +27,8 @@ public class QuestionAnswer implements Serializable {
     @JsonIgnore
     private Question question;
 
-    public QuestionAnswer(String answer) {
+    public QuestionAnswer(String answer, Question question) {
         this.answer = answer;
+        this.question = question;
     }
 }

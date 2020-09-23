@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -27,9 +28,11 @@ public class Question {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "question")
     @JsonIgnore
     @Setter(AccessLevel.NONE)
-    private List<QuestionAnswer> questionAnswerList;
+    private List<QuestionAnswer> questionAnswerList = new ArrayList<>();
 
-    private long correctAnswerId = -1;
+    @OneToOne
+    @JoinColumn(name = "correct_answer_id")
+    private QuestionAnswer correctAnswer;
 
     public Question(String question, Quiz quiz) {
         this.question = question;
@@ -47,7 +50,7 @@ public class Question {
     public void addAnswer(QuestionAnswer answer, boolean correct) {
         addAnswer(answer);
         if (correct) {
-            correctAnswerId = answer.getId();
+            setCorrectAnswer(answer);
         }
     }
 }

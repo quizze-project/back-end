@@ -1,6 +1,5 @@
 package com.br.quizze.resources;
 
-import com.br.quizze.dao.QuizDTO;
 import com.br.quizze.entities.Quiz;
 import com.br.quizze.entities.User;
 import com.br.quizze.repositories.QuizRepository;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/quizzes")
@@ -24,14 +22,14 @@ public class QuizResource {
     private UserRepository userRepository;
 
     @GetMapping
-    public ResponseEntity<List<QuizDTO>> findAll() {
-        List<QuizDTO> quizzes = quizRepository
+    public ResponseEntity<List<Quiz>> findAll() {
+/*        List<QuizDTO> quizzes = quizRepository
                 .findAll()
                 .stream()
                 .map(m -> new QuizDTO(m.getId(), m.getName(), m.getCreatedAt(), m.getCreator().getId()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
 
-        return ResponseEntity.ok().body(quizzes);
+        return ResponseEntity.ok().body(quizRepository.findAll());
     }
 
     @PostMapping(value = "/{id}")

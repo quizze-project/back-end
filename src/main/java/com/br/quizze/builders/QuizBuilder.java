@@ -17,8 +17,11 @@ public class QuizBuilder {
         return this;
     }
 
-    public QuizBuilder addQuestion(Question question) {
-        quiz.addQuestion(question);
+    public QuizBuilder addQuestion(Question... questions) {
+        for (Question question : questions) {
+            question.setQuiz(quiz);
+            quiz.addQuestion(question);
+        }
         return this;
     }
 

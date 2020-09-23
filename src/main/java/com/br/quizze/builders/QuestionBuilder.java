@@ -12,13 +12,17 @@ public class QuestionBuilder {
     }
 
     public QuestionBuilder answer(String answer) {
-        question.addAnswer(new QuestionAnswer(answer));
+        question.addAnswer(getNewQuestionAnswer(answer));
         return this;
     }
 
     public QuestionBuilder answer(String answer, boolean correct) {
-        question.addAnswer(new QuestionAnswer(answer), correct);
+        question.addAnswer(getNewQuestionAnswer(answer), correct);
         return this;
+    }
+
+    private QuestionAnswer getNewQuestionAnswer(String answer) {
+        return new QuestionAnswer(answer, question);
     }
 
     public Question build() {

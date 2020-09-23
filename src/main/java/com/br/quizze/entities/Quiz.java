@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class Quiz implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "quiz")
     @Setter(AccessLevel.NONE)
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
 
     public Quiz(String name) {
         this.name = name;
