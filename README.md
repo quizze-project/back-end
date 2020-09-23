@@ -23,11 +23,7 @@ is simpler when compared to other frameworks that run in JVM as Ktor.
 
 #### Choice
 
-<<<<<<< HEAD
 The database is PostgreSQL 12.3
-=======
-The database is **PostgreSQL 12.3**
->>>>>>> b45c5a9ba7d46c9eb106ff25074f95879b60e10f
 
 ##### Why we chose this database?
 
