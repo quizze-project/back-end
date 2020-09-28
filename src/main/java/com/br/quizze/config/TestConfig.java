@@ -2,9 +2,8 @@ package com.br.quizze.config;
 
 import com.br.quizze.builders.QuestionBuilder;
 import com.br.quizze.builders.QuizBuilder;
-import com.br.quizze.entities.Question;
-import com.br.quizze.entities.Quiz;
-import com.br.quizze.entities.User;
+import com.br.quizze.entities.*;
+import com.br.quizze.repositories.QuizAnswerRepository;
 import com.br.quizze.repositories.QuizRepository;
 import com.br.quizze.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,6 @@ public class TestConfig implements CommandLineRunner {
     @Override
     public void run(String... args) {
         User u1 = new User("User", "Teste");
-
 
         Question question1 = new QuestionBuilder("Quem descobriu o Brasil?")
                 .answer("Pedro Alvares Cabral")

@@ -11,18 +11,12 @@ import java.util.List;
 
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(callSuper = true)
 @Entity()
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Quiz implements Serializable {
+public class Quiz extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
     private String name;
     private long createdAt;
     private boolean isPrivate;
