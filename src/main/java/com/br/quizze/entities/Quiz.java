@@ -18,12 +18,11 @@ import java.util.List;
 public class Quiz extends BaseEntity {
 
     private String name;
-    private long createdAt;
+    private long createdAt = System.currentTimeMillis();
     private boolean isPrivate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
-    @JsonIgnore
     private User creator;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "quiz")
@@ -35,10 +34,10 @@ public class Quiz extends BaseEntity {
         this.createdAt = System.currentTimeMillis();
     }
 
-    public Quiz(String name, boolean isPrivate, User creator) {
+
+    public Quiz(String name, boolean isPrivate) {
         this.name = name;
         this.isPrivate = isPrivate;
-        this.creator = creator;
         this.createdAt = System.currentTimeMillis();
     }
 

@@ -23,11 +23,10 @@ public class Question extends BaseEntity {
     private Quiz quiz;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "question")
-    @JsonIgnore
     @Setter(AccessLevel.NONE)
     private List<QuestionAnswer> questionAnswerList = new ArrayList<>();
 
-    @OneToOne(optional = true)
+    @OneToOne()
     @JoinColumn(name = "correct_answer_id")
     private QuestionAnswer correctAnswer;
 
