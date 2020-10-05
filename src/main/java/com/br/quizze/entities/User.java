@@ -3,11 +3,15 @@ package com.br.quizze.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,6 +22,8 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends BaseEntity {
 
+    @Length(min = 5, max = 32)
+    private String username;
     private String email;
     private String password;
 
@@ -31,7 +37,8 @@ public class User extends BaseEntity {
     @Setter(AccessLevel.NONE)
     private List<QuizAnswer> quizAnswers;
 
-    public User(String email, String password) {
+    public User(@Length(min = 5, max = 32) String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }

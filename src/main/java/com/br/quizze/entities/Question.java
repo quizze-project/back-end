@@ -4,17 +4,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @Data
 @Entity()
 @NoArgsConstructor
 public class Question extends BaseEntity {
 
+    @Length(max = 250)
     private String question;
 
     @ManyToOne(fetch = FetchType.LAZY)

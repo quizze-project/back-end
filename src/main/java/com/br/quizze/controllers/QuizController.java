@@ -4,7 +4,6 @@ import com.br.quizze.entities.Quiz;
 import com.br.quizze.entities.User;
 import com.br.quizze.repositories.QuizRepository;
 import com.br.quizze.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +16,14 @@ import java.util.Optional;
 @RequestMapping(value = "/quizzes")
 public class QuizController {
 
-    @Autowired
-    private QuizRepository quizRepository;
+    private final QuizRepository quizRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public QuizController(QuizRepository quizRepository, UserRepository userRepository) {
+        this.quizRepository = quizRepository;
+        this.userRepository = userRepository;
+    }
 
     @GetMapping
     public ResponseEntity<List<Quiz>> findAll() {
@@ -38,6 +40,7 @@ public class QuizController {
         Optional<User> user = userRepository.findById(creator_id);
         if (user.isPresent()) {
             quiz.setCreator(user.get());
+            quizRepository.save(quiz);
             return ResponseEntity.ok(quiz);
         }
 

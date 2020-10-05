@@ -12,19 +12,23 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "/images")
 public class ImageController {
 
-    @Autowired
-    private ImageReposiory imageReposiory;
+    private final ImageReposiory imageReposiory;
+
+    public ImageController(ImageReposiory imageReposiory) {
+        this.imageReposiory = imageReposiory;
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Image> getImage(@PathVariable long id) {
         return ResponseEntity.of(imageReposiory.findById(id));
     }
 
+/*
     @PostMapping
     public ResponseEntity<Image> uploadImage(@RequestParam("file") MultipartFile file) {
 
-        file.getSize()
 
     }
+*/
 
 }

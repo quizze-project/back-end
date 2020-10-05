@@ -24,8 +24,8 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        User u1 = new User("User", "Teste");
-
+        User u1 = new User("Carlinhos Tereu", "User", "Teste");
+/*
         Question question1 = new QuestionBuilder("Quem descobriu o Brasil?")
                 .answer("Pedro Alvares Cabral")
                 .answer("Jorge Carlos", true)
@@ -35,9 +35,9 @@ public class TestConfig implements CommandLineRunner {
         Quiz q1 = new QuizBuilder("Você é inteligente?")
                 .addQuestion(question1)
                 .creator(u1)
-                .build();
+                .build();*/
 
+        /*quizRepository.save(q1);*/
         userRepository.save(u1);
-        quizRepository.save(q1);
     }
 }

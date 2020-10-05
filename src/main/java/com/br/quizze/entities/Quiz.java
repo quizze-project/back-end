@@ -1,11 +1,11 @@
 package com.br.quizze.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +17,13 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Quiz extends BaseEntity {
 
+    @Length(min = 4, max = 32)
     private String name;
+
+    @Nullable
+    @Length(max = 50)
+    private String description;
+
     private long createdAt = System.currentTimeMillis();
     private boolean isPrivate;
 
@@ -29,16 +35,13 @@ public class Quiz extends BaseEntity {
     @Setter(AccessLevel.NONE)
     private List<Question> questions = new ArrayList<>();
 
-    public Quiz(String name) {
+    public Quiz(@Length(min = 4, max = 32) String name) {
         this.name = name;
-        this.createdAt = System.currentTimeMillis();
     }
-
 
     public Quiz(String name, boolean isPrivate) {
         this.name = name;
         this.isPrivate = isPrivate;
-        this.createdAt = System.currentTimeMillis();
     }
 
     public void addQuestion(Question question) {

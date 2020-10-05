@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
 @EqualsAndHashCode(callSuper = true)
 public class QuestionAnswer extends BaseEntity {
 
+    @Length(max = 150)
     private String answer;
 
     @ManyToOne

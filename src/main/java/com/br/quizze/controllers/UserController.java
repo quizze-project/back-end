@@ -1,4 +1,4 @@
-package com.br.quizze.resources;
+package com.br.quizze.controllers;
 
 import com.br.quizze.entities.User;
 import com.br.quizze.repositories.UserRepository;
@@ -12,10 +12,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
@@ -25,7 +28,7 @@ public class UserResource {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> findByName(@PathVariable long id) {
-        return ResponseEntity.ok().body(userRepository.findById(id).get());
+        return ResponseEntity.of(userRepository.findById(id));
     }
 
     @PostMapping
